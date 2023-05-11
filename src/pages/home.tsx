@@ -22,7 +22,5 @@ export const Home = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    borderColor: 'blue',
-    borderWidth: 1,
   },
 });
