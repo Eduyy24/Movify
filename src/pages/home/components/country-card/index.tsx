@@ -1,5 +1,6 @@
 import React, {FC} from 'react';
 import {
+  Alert,
   Linking,
   Platform,
   Pressable,
@@ -9,6 +10,7 @@ import {
 } from 'react-native';
 import {COLORS} from '../../../../styles';
 import Countries from 'countries-capitals';
+import {ALERT_MSG} from '../../../../utils/strings';
 
 interface Props {
   country: string;
@@ -25,12 +27,15 @@ export const CountryCard: FC<Props> = ({country}) => {
   });
 
   const onPressGo = () => {
-    console.log('country', country, countryJson);
-    Linking.canOpenURL(url ?? '').then(supported => {
-      if (supported) {
-        return Linking.openURL(url ?? '');
-      }
-    });
+    Linking.canOpenURL(url ?? '')
+      .then(supported => {
+        if (supported) {
+          return Linking.openURL(url ?? '');
+        } else {
+          Alert.alert('Error', ALERT_MSG.DEFAULT);
+        }
+      })
+      .catch(() => Alert.alert('Error', ALERT_MSG.DEFAULT));
   };
 
   return (

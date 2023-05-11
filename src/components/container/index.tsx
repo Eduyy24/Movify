@@ -12,7 +12,7 @@ export const Container = ({children}: PropsWithChildren) => {
   const isDarkMode = useColorScheme() === 'dark';
 
   const backgroundStyle = {
-    backgroundColor: isDarkMode ? COLORS.BROWN : COLORS.CLEAR,
+    backgroundColor: isDarkMode ? COLORS.BROWN : COLORS.BROWN,
   };
 
   return (
@@ -29,5 +29,6 @@ export const Container = ({children}: PropsWithChildren) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: COLORS.WHITE,
   },
 });
