@@ -1,5 +1,12 @@
 import React, {FC} from 'react';
-import {StyleSheet, Text, View} from 'react-native';
+import {
+  Linking,
+  Platform,
+  Pressable,
+  StyleSheet,
+  Text,
+  View,
+} from 'react-native';
 import {COLORS} from '../../../../styles';
 import Countries from 'countries-capitals';
 
@@ -11,11 +18,26 @@ export const CountryCard: FC<Props> = ({country}) => {
   const countries = new Countries();
   const countryInfo = countries.byName(country);
   const countryJson = countryInfo.toJson();
+
+  const url = Platform.select({
+    ios: 'maps:?q=' + country,
+    android: 'geo:?q=' + country,
+  });
+
+  const onPressGo = () => {
+    console.log('country', country, countryJson);
+    Linking.canOpenURL(url ?? '').then(supported => {
+      if (supported) {
+        return Linking.openURL(url ?? '');
+      }
+    });
+  };
+
   return (
     <View style={styles.container}>
-      <View style={styles.containerGo}>
+      <Pressable style={styles.containerGo} onPress={onPressGo}>
         <Text style={styles.txtGO}>GO</Text>
-      </View>
+      </Pressable>
       <View style={styles.containerInfo}>
         <Text style={styles.txtName}>{country}</Text>
         <Text style={styles.txtCapital}>{countryJson[0]?.city}</Text>
