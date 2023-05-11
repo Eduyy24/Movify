@@ -40,7 +40,10 @@ export const CountryCard: FC<Props> = ({country}) => {
 
   return (
     <View style={styles.container}>
-      <Pressable style={styles.containerGo} onPress={onPressGo}>
+      <Pressable
+        testID="press-go"
+        style={styles.containerGo}
+        onPress={onPressGo}>
         <Text style={styles.txtGO}>GO</Text>
       </Pressable>
       <View style={styles.containerInfo}>
