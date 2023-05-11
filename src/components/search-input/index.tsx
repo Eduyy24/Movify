@@ -9,7 +9,11 @@ interface Props {
 export const SearchInput: FC<Props> = ({onChangeSearch}) => {
   return (
     <View style={styles.container}>
-      <TextInput style={styles.inputText} onChangeText={onChangeSearch} />
+      <TextInput
+        testID="search-input"
+        style={styles.inputText}
+        onChangeText={onChangeSearch}
+      />
       <Image source={require('../../assets/icons/search.png')} />
     </View>
   );
