@@ -7,9 +7,19 @@ export const getAuthToken = async (): Promise<string> => {
     headers: {
       Accept: 'application/json',
       'api-token':
-        'kNMnIQjuBxcJYzBu3czl1ewnJxF-_6Tc3fVrjjXVzSQIkZpB_HtwwNeHO_7Ja8SxcmU',
-      'user-email': 'Eduyy_24@hotmail.com',
+        'qiBvxm5fv7Q8CB0fz0xfjJ1fYmV_46nXKOjUuMlXOn0JxDefmGXpGcpUr0J5Mv_MMYc',
+      'user-email': 'Eduyy.24@gmail.com',
     },
   });
   return response.data.auth_token;
+};
+
+export const getCountries = async (token: string): Promise<string[]> => {
+  const response = await axios.get(`${BASE_URL}/countries/`, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+      Accept: 'application/json',
+    },
+  });
+  return response.data.map((country: any) => country.country_name);
 };

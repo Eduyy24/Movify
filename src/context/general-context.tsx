@@ -1,11 +1,12 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import {createContext, useEffect, useState} from 'react';
-import {getAuthToken} from '../services';
+import {getAuthToken, getCountries} from '../services';
 import {Alert} from 'react-native';
+import {ALERT_MSG} from '../utils/strings';
 
 export interface IContextProps {
   loading: boolean;
-  countryList: ICountryData[];
+  countryList: string[];
 }
 
 export const GeneralContext = createContext<IContextProps>({
@@ -16,7 +17,7 @@ export const GeneralContext = createContext<IContextProps>({
 export const valueGeneralContext = (): IContextProps => {
   const [loading, setLoading] = useState<boolean>(true);
   const [token, setToken] = useState<string>('');
-  const [countryList, setCountryList] = useState<ICountryData[]>([]);
+  const [countryList, setCountryList] = useState<string[]>([]);
 
   useEffect(() => {
     const generateToken = async () => {
@@ -25,7 +26,7 @@ export const valueGeneralContext = (): IContextProps => {
         setToken(tokenGenerated);
       } catch (error) {
         // Sentry
-        Alert.alert('Error', 'Ha ocurrido un error inesperado');
+        Alert.alert('Error', ALERT_MSG.DEFAULT);
       }
     };
     generateToken();
@@ -33,11 +34,16 @@ export const valueGeneralContext = (): IContextProps => {
 
   useEffect(() => {
     const fetchCountryList = async () => {
+      if (!token) {
+        return;
+      }
+
       try {
-        // setCountryList(response.data);
+        const list = await getCountries(token);
+        setCountryList(list);
         setLoading(false);
       } catch (error) {
-        console.log(error);
+        Alert.alert('Error', ALERT_MSG.DEFAULT);
       }
     };
     fetchCountryList();
