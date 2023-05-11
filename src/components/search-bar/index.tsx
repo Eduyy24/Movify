@@ -1,14 +1,11 @@
-import React from 'react';
+import React, {FC} from 'react';
 import {Image, StyleSheet, TextInput, View} from 'react-native';
 import {COLORS} from '../../styles';
-import {useGeneralContext} from '../../hooks/useGeneralContext';
 
-export const SearchBar = () => {
-  const {setValueSearch} = useGeneralContext();
-  const onChangeSearch = (text: string) => {
-    setValueSearch(text);
-  };
-
+interface Props {
+  onChangeSearch: (text: string) => void;
+}
+export const SearchInput: FC<Props> = ({onChangeSearch}) => {
   return (
     <View style={styles.container}>
       <TextInput style={styles.inputText} onChangeText={onChangeSearch} />

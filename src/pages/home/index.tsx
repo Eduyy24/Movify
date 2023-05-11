@@ -1,10 +1,10 @@
 import React from 'react';
-import {SearchBar} from '../../components/search-bar';
 import {HorizontalLine} from '../../components/horizontal-line';
 import {StyleSheet, View} from 'react-native';
 import {Loading} from '../../components/loading';
 import {CountryList} from './components/country-list';
 import {useGeneralContext} from '../../hooks/useGeneralContext';
+import {SearchBar} from './components/search-bar';
 
 const Home = () => {
   const {loading} = useGeneralContext();
