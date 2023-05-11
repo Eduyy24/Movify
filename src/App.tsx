@@ -1,7 +1,7 @@
 import React from 'react';
 import {Container} from './components/container';
 
-import {Home} from './pages/home';
+import Home from './pages/home';
 import {GeneralContext, valueGeneralContext} from './context/general-context';
 
 function App(): JSX.Element {

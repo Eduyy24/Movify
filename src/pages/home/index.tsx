@@ -1,12 +1,12 @@
 import React from 'react';
-import {SearchBar} from '../components/search-bar';
-import {HorizontalLine} from '../components/horizontal-line';
+import {SearchBar} from '../../components/search-bar';
+import {HorizontalLine} from '../../components/horizontal-line';
 import {StyleSheet, View} from 'react-native';
-import {Loading} from '../components/loading';
-import {useGeneralContext} from '../hooks/useGeneralContext';
+import {Loading} from '../../components/loading';
 import {CountryList} from './components/country-list';
+import {useGeneralContext} from '../../hooks/useGeneralContext';
 
-export const Home = () => {
+const Home = () => {
   const {loading} = useGeneralContext();
 
   if (loading) {
@@ -26,3 +26,5 @@ const styles = StyleSheet.create({
     flex: 1,
   },
 });
+
+export default Home;
