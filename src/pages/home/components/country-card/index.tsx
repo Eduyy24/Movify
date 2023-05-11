@@ -1,12 +1,16 @@
 import React, {FC} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import {COLORS} from '../../../../styles';
+import Countries from 'countries-capitals';
 
 interface Props {
   country: string;
 }
 
 export const CountryCard: FC<Props> = ({country}) => {
+  const countries = new Countries();
+  const countryInfo = countries.byName(country);
+  const countryJson = countryInfo.toJson();
   return (
     <View style={styles.container}>
       <View style={styles.containerGo}>
@@ -14,8 +18,8 @@ export const CountryCard: FC<Props> = ({country}) => {
       </View>
       <View style={styles.containerInfo}>
         <Text style={styles.txtName}>{country}</Text>
-        <Text style={styles.txtCapital}>{country}</Text>
-        <Text style={styles.txtRegion}>{country}</Text>
+        <Text style={styles.txtCapital}>{countryJson[0]?.city}</Text>
+        <Text style={styles.txtRegion}>{countryJson[0]?.location}</Text>
       </View>
     </View>
   );
@@ -28,9 +32,13 @@ const styles = StyleSheet.create({
     padding: 12,
     backgroundColor: COLORS.CLEAR,
     borderRadius: 12,
-    elevation: 2,
     flexDirection: 'row',
     alignItems: 'center',
+    elevation: 2,
+    shadowOffset: {width: -2, height: 4},
+    shadowColor: '#171717',
+    shadowOpacity: 0.2,
+    shadowRadius: 3,
   },
   containerGo: {
     padding: 8,
@@ -41,7 +49,7 @@ const styles = StyleSheet.create({
   containerInfo: {
     flex: 1,
     height: '100%',
-    justifyContent: 'space-between',
+    justifyContent: 'space-evenly',
   },
   txtGO: {
     fontSize: 50,

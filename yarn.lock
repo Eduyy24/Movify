@@ -2675,6 +2675,13 @@ cosmiconfig@^5.0.5, cosmiconfig@^5.1.0:
     js-yaml "^3.13.1"
     parse-json "^4.0.0"
 
+countries-capitals@^1.3.5:
+  version "1.3.5"
+  resolved "https://registry.yarnpkg.com/countries-capitals/-/countries-capitals-1.3.5.tgz#35f8e2f563f2b272079941f3a8bdfe7ef1308827"
+  integrity sha512-/Ce0Vc3gupC2SafCbUJagd00tw32Z+/+HvqSeZ0b/H/7YFA3kWPKSBhOzbve0KvayY0GVI9fOXzvvXHeTe1ycw==
+  dependencies:
+    random-item "3.0.0"
+
 cross-spawn@^6.0.0:
   version "6.0.5"
   resolved "https://registry.yarnpkg.com/cross-spawn/-/cross-spawn-6.0.5.tgz#4a5ec7c64dfae22c3a14124dbacdee846d80cbc4"
@@ -5722,6 +5729,11 @@ queue-microtask@^1.2.2:
   version "1.2.3"
   resolved "https://registry.yarnpkg.com/queue-microtask/-/queue-microtask-1.2.3.tgz#4929228bbc724dfac43e0efb058caf7b6cfb6243"
   integrity sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==
+
+random-item@3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/random-item/-/random-item-3.0.0.tgz#a94edca6845de662072e325c29eca8e85ef88ced"
+  integrity sha512-IpO3Jk9/Dt79R7iS/Fn2d2asGXahMNnXLNRsgSmjTTtiS0tZ972BWEEm9uUgm3YAon5YFUt8126FA9wJAjmeZw==
 
 range-parser@~1.2.1:
   version "1.2.1"
