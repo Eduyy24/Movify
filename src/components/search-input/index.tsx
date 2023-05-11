@@ -5,6 +5,7 @@ import {COLORS} from '../../styles';
 interface Props {
   onChangeSearch: (text: string) => void;
 }
+
 export const SearchInput: FC<Props> = ({onChangeSearch}) => {
   return (
     <View style={styles.container}>
