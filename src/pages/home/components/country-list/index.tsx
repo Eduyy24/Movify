@@ -6,12 +6,12 @@ import {CountryCard} from '../country-card';
 const Separator = () => <View style={styles.separator} />;
 
 export const CountryList = () => {
-  const {countryList} = useGeneralContext();
+  const {countryListRender} = useGeneralContext();
 
   return (
     <View>
       <FlatList
-        data={countryList}
+        data={countryListRender}
         renderItem={({item}) => <CountryCard country={item} />}
         ItemSeparatorComponent={Separator}
         contentContainerStyle={styles.list}

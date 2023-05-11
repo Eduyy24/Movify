@@ -1,11 +1,17 @@
 import React from 'react';
 import {Image, StyleSheet, TextInput, View} from 'react-native';
 import {COLORS} from '../../styles';
+import {useGeneralContext} from '../../hooks/useGeneralContext';
 
 export const SearchBar = () => {
+  const {setValueSearch} = useGeneralContext();
+  const onChangeSearch = (text: string) => {
+    setValueSearch(text);
+  };
+
   return (
     <View style={styles.container}>
-      <TextInput style={styles.inputText} />
+      <TextInput style={styles.inputText} onChangeText={onChangeSearch} />
       <Image source={require('../../assets/icons/search.png')} />
     </View>
   );

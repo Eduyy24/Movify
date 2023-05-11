@@ -1,23 +1,37 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import {createContext, useEffect, useState} from 'react';
+import {
+  Dispatch,
+  SetStateAction,
+  createContext,
+  useEffect,
+  useState,
+} from 'react';
 import {getAuthToken, getCountries} from '../services';
 import {Alert} from 'react-native';
 import {ALERT_MSG} from '../utils/strings';
+import useDebounce from '../hooks/useDebounce';
 
 export interface IContextProps {
   loading: boolean;
   countryList: string[];
+  countryListRender: string[];
+  setValueSearch: Dispatch<SetStateAction<string>>;
 }
 
 export const GeneralContext = createContext<IContextProps>({
   loading: true,
   countryList: [],
+  countryListRender: [],
+  setValueSearch: () => {},
 });
 
 export const valueGeneralContext = (): IContextProps => {
   const [loading, setLoading] = useState<boolean>(true);
   const [token, setToken] = useState<string>('');
+  const [valueSearch, setValueSearch] = useState<string>('');
   const [countryList, setCountryList] = useState<string[]>([]);
+  const [countryListRender, setCountryListRender] = useState<string[]>([]);
+  const debunceValue = useDebounce(valueSearch, 300);
 
   useEffect(() => {
     const generateToken = async () => {
@@ -49,8 +63,21 @@ export const valueGeneralContext = (): IContextProps => {
     fetchCountryList();
   }, [token]);
 
+  useEffect(() => {
+    if (!debunceValue) {
+      setCountryListRender(countryList);
+    } else {
+      const list = countryList.filter(country =>
+        country.toLowerCase().includes(debunceValue.toLowerCase()),
+      );
+      setCountryListRender(list);
+    }
+  }, [debunceValue, countryList]);
+
   return {
     loading,
     countryList,
+    countryListRender,
+    setValueSearch,
   };
 };
