@@ -8,7 +8,7 @@ Aplicacón movil para el listado de los paises con su respectiva capital y ciuda
 
 La aplicacion fue construida para su visualización en **IOS**, dada las ventajas que tiene al poder configurar directamente el **splash** desde Xcode.
 
-La implementación esta basada en **useContext**, para el manejo de datos de auth y de información a renderizar, de esta forma se logra un mejor manejo del estado, evitando asi re-renders innecesarios y que cada componente (organismos) pueda manejar su propia lógica.
+La implementación esta basada en **useContext**, para el manejo de datos de auth y de información a renderizar, de esta forma se logra un mejor manejo del estado, evitando asi re-renders innecesarios y que cada componente (organismos) pueda manejar su propia lógica. Se realizaron las pruebas unitarias usando **Jest/Testing-library**
 
 ## Instalación
 
