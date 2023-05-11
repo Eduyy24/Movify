@@ -12,7 +12,7 @@ export const CountryCard: FC<Props> = ({country}) => {
       <View style={styles.containerGo}>
         <Text style={styles.txtGO}>GO</Text>
       </View>
-      <View>
+      <View style={styles.containerInfo}>
         <Text style={styles.txtName}>{country}</Text>
         <Text style={styles.txtCapital}>{country}</Text>
         <Text style={styles.txtRegion}>{country}</Text>
@@ -23,8 +23,8 @@ export const CountryCard: FC<Props> = ({country}) => {
 
 const styles = StyleSheet.create({
   container: {
-    height: 120,
-    margin: 12,
+    flex: 1,
+    minHeight: 120,
     padding: 12,
     backgroundColor: COLORS.CLEAR,
     borderRadius: 12,
@@ -37,6 +37,11 @@ const styles = StyleSheet.create({
     backgroundColor: COLORS.PRIMARY,
     borderRadius: 8,
     marginRight: 12,
+  },
+  containerInfo: {
+    flex: 1,
+    height: '100%',
+    justifyContent: 'space-between',
   },
   txtGO: {
     fontSize: 50,
