@@ -27,10 +27,10 @@ export const CountryCard: FC<Props> = ({country}) => {
   });
 
   const onPressGo = () => {
-    Linking.canOpenURL(url ?? '')
+    Linking.canOpenURL(url!)
       .then(supported => {
         if (supported) {
-          return Linking.openURL(url ?? '');
+          Linking.openURL(url!);
         } else {
           Alert.alert('Error', ALERT_MSG.DEFAULT);
         }
