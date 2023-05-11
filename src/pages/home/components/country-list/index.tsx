@@ -1,6 +1,7 @@
 import React from 'react';
 import {useGeneralContext} from '../../../../hooks/useGeneralContext';
-import {FlatList, View, Text} from 'react-native';
+import {FlatList, View} from 'react-native';
+import {CountryCard} from '../country-card';
 
 export const CountryList = () => {
   const {countryList} = useGeneralContext();
@@ -8,7 +9,7 @@ export const CountryList = () => {
     <View>
       <FlatList
         data={countryList}
-        renderItem={({item}) => <Text>{item}</Text>}
+        renderItem={({item}) => <CountryCard country={item} />}
       />
     </View>
   );
